@@ -12,24 +12,36 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { API_ROOT } from '../../API/api-config';
 
+import './suggestions.css'
+
 const useStyles = makeStyles((theme) => ({
+
 	root: theme.mixins.gutters({
 		padding: theme.spacing(1),
 		paddingBottom: 24,
-		backgroundColor: '#80808024'
+		backgroundColor: '#80808024',
+		with: '60%'
 	}),
-	title: {
+
+/* 	title: {
 		margin: `${theme.spacing(4)}px 0 ${theme.spacing(2)}px`,
 		color: theme.palette.openTitle,
 		fontSize: '1.1em'
-	},
+	}, */
+
+
 	viewButton: {
 		verticalAlign: 'middle'
 	},
-	card: {
+
+/* 	card: {
 		width: '100%',
-		display: 'inline-flex'
-	},
+		display: 'inline-flex',
+		position: 'center'
+		marginTop:'20px'
+		
+	} */ 
+
 	details: {
 		display: 'inline-block',
 		width: '100%'
@@ -39,9 +51,9 @@ const useStyles = makeStyles((theme) => ({
 		padding: '16px 8px 0px'
 	},
 	cover: {
-		width: '65%',
-		height: 130,
-		margin: '8px'
+		width: '30%',
+		height: 190,
+		margin: '18px'
 	},
 	controls: {
 		marginTop: '8px'
@@ -77,63 +89,99 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Suggestions(props) {
 	const classes = useStyles();
+
 	return (
-		<div>
-			<Paper className={classes.root} elevation={10}>
-				<Typography type='title' className={classes.title}>
-					Ultimos Productos
-				</Typography>
+	<div>
+		<Paper className="tarjeta" elevation={10}>
+
+				<div className="titulo">
+					Ultimos Productos en WallaRock
+				</div>
+
 				{props.products.map((item, i) => {
+					
 					return (
 						<span key={i}>
-							<Card className={classes.card}>
+							<div className="tarje-pequeña">
+
+								{/* <div className="image is-4by3"> */}
 								<CardMedia
 									className={classes.cover}
 									image={`${API_ROOT}/api/product/image/${item._id}`}
-									title={item.name}
+									/* alt="foto" */
+									/* title={item.name} */
 								/>
+
+							{/* 	</div> */}
+
+								
 								<div className={classes.details}>
+									
 									<CardContent className={classes.content}>
-										<Link to={'/product/' + item._id}>
-											<Typography
-												variant='h3'
+																				
+										{/* <Link to={'/product/' + item._id}>
+										</Link>	 */}
+
+										<div className="precio-2">
+											{item.price} €
+										</div>
+
+											<div className="nombre"
+											>
+												{/*  variant='h3'
 												component='h3'
-												className={classes.productTitle}
-												color='primary'>
+												color='primary'  */}
+
 												{item.name}
-											</Typography>
-										</Link>
-										<Typography
-											component='p'
-											className={classes.date}>
+
+											</div>
+
+										
+
+										<div className="descripcion"
+										>
+
+										{item.name}
+
+										</div>
+
+										
+										
+										<div className="fecha"
+											/* component='p' */
+											>
 											Agregado{' '}
 											{new Date(
 												item.created
 											).toDateString()}
-										</Typography>
+										</div>
+
 									</CardContent>
+
+
 									<div className={classes.controls}>
-										<Typography
-											type='subheading'
-											component='h3'
-											className={classes.price}
-											color='primary'>
-											{' '}
-											{item.price} €
-										</Typography>
+										
+										
+
+
+										
 										<span className={classes.actions}>
 											<Link to={'/product/' + item._id}>
+												
 												<IconButton color='secondary'>
 													<ViewIcon
 														className={classes.iconButton}
 													/>
 												</IconButton>
 											</Link>
+											
 										</span>
 									</div>
 								</div>
-							</Card>
+							</div>
+
 							<Divider />
+
 						</span>
 					);
 				})}

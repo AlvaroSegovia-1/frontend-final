@@ -144,6 +144,7 @@ export default function Product({ match }) {
 		return (
 			<>			
 				<div className="pagina-fondo">
+					
 				 <div className="container-detail">
 	  
 	  
@@ -202,7 +203,7 @@ export default function Product({ match }) {
 				  </div>
 								 {/* is-4by3 */}
 
-						  <div className="ima image is-4by3">
+						  <div className="ima image is-4by2">
 						  		<img
 								  src={imageUrl}
 							   />
@@ -256,16 +257,16 @@ export default function Product({ match }) {
 								</div>
 	  
 								<div className="media">
-								<TwitterShareButton
+									<TwitterShareButton
 
-								  url={`http://localhost:3001/product/${product.className.replace(
-									/\s+/g, '-', )}/${product._id}`}
+									/* url={`http://localhost:3001/product/${product.className.replace(
+										/\s+/g, '-', )}/${product._id}`}  */
 
-								  title={product.name}
-								>
+									title={product.name}
+									>
 
-								  <TwitterIcon size={36} />
-								</TwitterShareButton> 
+									<TwitterIcon size={36} />
+									</TwitterShareButton> 
 								</div>
 	  
 								<div className="media">

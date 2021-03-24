@@ -4,7 +4,7 @@ import Home from '../layout/Home';
 
 import Base from '../layout/Base.js';
 import Users from '../usuario/Users';
-import Product from '../productos/Product';
+import Product from '../productDetail/Product';
 import Perfil from '../usuario/Profile';
 import NuevoProducto from '../productos/NuevoProducto';
 import DeleteProducto from '../productos/DeleteProduct';

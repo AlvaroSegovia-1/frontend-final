@@ -1,0 +1,30 @@
+.tarjeta{
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px 10px 10px 10px;
+}
+.tarje-pequeña{
+    display: inline-flex;
+    background-color: #faebeb;
+    border: 2px solid #9c9c9c;
+    border-radius: 5px;
+    width: 100%;
+	box-shadow: 0px 0px 8px 0px;
+    margin: 12px 0px;
+}
+
+.titulo{
+    text-align: center;
+    font-size: 25px;
+    padding: 10px 10px 10px 10px;
+}
+.precio-2{
+    color: crimson;
+    font-size: 30px;
+}
+
+.nombre{
+    font-size: 20px;
+
+}
+

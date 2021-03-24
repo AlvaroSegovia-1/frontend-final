@@ -117,10 +117,14 @@ const Signin = ({ onSignin, onsingup }) => {
 				</Form>
 
 				<Button as={Link}>Recuperar contraseña </Button>
-				{` |`}
+
+
+				{/* {` |`}
 				<Button as={Link} onClick={() => onsingup()}>
 					Registrate
-				</Button>
+				</Button> */}
+
+
 			</Card>
 		</div>
 	);

@@ -7,7 +7,7 @@ export default function SignBase({ onbasein, onbaseup }) {
 	return (
 		<div className='container'>
 			<br />
-			<h1>¡Bienvenido a wallapop!</h1>
+			<h1>¡Bienvenido a WallaRock!</h1>
 			<p>Registrate o inicia sesión</p>
 			<br />
 			<div className='container-buttons'>
@@ -19,6 +19,7 @@ export default function SignBase({ onbasein, onbaseup }) {
 					}}>
 					Entrar con Facebook
 				</Button>
+
 				<Button
 					shape='round'
 					style={{
@@ -27,9 +28,12 @@ export default function SignBase({ onbasein, onbaseup }) {
 					}}>
 					Entrar con Google
 				</Button>
+
 			</div>
+
 			<br />
-			<p>o continua con tu email</p>
+			{/* <p>o continua con tu email</p> */}
+
 			<p>
 				<Button as={Link} onClick={() => onbasein()}>
 					Inicia sesión{' '}

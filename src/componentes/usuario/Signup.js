@@ -96,7 +96,7 @@ export default function Signup({ onSign }) {
 	return (
 		<div>
 			<Card
-				title='Regístrate en wallapop'
+				title='Regístrate en WallaRock'
 				bordered={false}
 				style={({ width: 300 }, { padding: 30 })}>
 				<Form.Item
@@ -148,30 +148,34 @@ export default function Signup({ onSign }) {
 						onClick={clickSubmit}>
 						Crear una cuenta
 					</Button>
-					<Button as={Link} onClick={() => onSign()}>
+
+				{/* 	<Button as={Link} onClick={() => onSign()}>
 						Sign In
-					</Button>
+					</Button> */}
+
 				</Form.Item>
 			</Card>
 
 			<Dialog
 				open={values.open}
 				disableBackdropClick={true}>
-				<DialogTitle>New Account</DialogTitle>
+				<DialogTitle>Nueva Cuenta</DialogTitle>
 				<DialogContent>
 					<DialogContentText>
-						New account successfully created.
+						Cuenta creada.
 					</DialogContentText>
 				</DialogContent>
+
 				<DialogActions>
 					<Button
 						color='primary'
 						autoFocus='autoFocus'
 						variant='contained'
 						onClick={() => onSign()}>
-						Sign In
+						Sign in
 					</Button>
 				</DialogActions>
+
 			</Dialog>
 		</div>
 	);

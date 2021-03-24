@@ -18,6 +18,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { read, update } from '../../API/api-product';
 import { Link, Redirect } from 'react-router-dom';
 
+import './nuevoproducto.css'
+
 const useStyles = makeStyles((theme) => ({
 	card: {
 		margin: 'auto',
@@ -160,23 +162,22 @@ export default function EditProduct({ match }) {
 		return <Redirect to={`/user/${id}/product`} />;
 	}
 	return (
-		<div>
+		<div className="subir-producto">
 			<Form layout='vertical'>
 				<Typography
 					type='headline'
-					component='h2'
+					component='h3'
 					className={classes.title}>
 					Editar producto
 				</Typography>
-				<br />
+				
 				<Form.Item
 					id='name'
 					label='Qué estas vendiendo?'
 					onChange={handleChange('name')}>
 					<Input size='large' value={values.name} />
 				</Form.Item>
-				<br />
-				<br />
+				
 				<Space>
 					<Form.Item label='Categoría'>
 						<Select
@@ -248,7 +249,7 @@ export default function EditProduct({ match }) {
 					onChange={handleChange('description')}>
 					<TextArea
 						size='large'
-						rows={4}
+						rows={3}
 						value={values.description}
 					/>
 				</Form.Item>
@@ -274,8 +275,7 @@ export default function EditProduct({ match }) {
 						</span>
 					</Space>
 				</Form.Item>
-				<br />
-				<br />
+				
 				<Space align='center'>
 					{values.error && (
 						<Typography component='p' color='error'>

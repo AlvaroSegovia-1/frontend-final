@@ -162,14 +162,36 @@ export default function Header() {
 	return (
 		<div className='bajo-navbar'>
 			<navbar className='navbar'>
-				<Col flex='auto'>
-					<a href='#' onClick={handleHome}>
-						<img
-							className='logo2'
-							width={180}
-							src='./wallarock.logo.svg'
-							flex='auto'
-							/* preview={false} */
+
+									
+					<Col flex='auto' >
+						<a href='#' onClick={handleHome}>
+							<img 
+								className="logo2"
+								width={180}
+								src='./Logo-wallarock-2.png'
+								flex='auto'
+								/* preview={false} */
+							/>
+						</a>
+					</Col>
+
+					<Col  flex='auto' >
+						{' '}
+						<br />
+					</Col>
+					
+					<Col flex='auto' >
+						<Search
+							onKeyDown={enterKey}
+							onChange={handleChange('search')}
+							placeholder='Busca un articulo'
+							onSearch={search}
+							enterButton
+							type='danger'
+							color='red'
+							className='logo'
+
 						/>
 					</a>
 				</Col>
