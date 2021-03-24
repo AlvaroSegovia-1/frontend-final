@@ -43,7 +43,7 @@ const Signin = ({ onSignin, onsingup }) => {
 			email: values.email || undefined,
 			password: values.password || undefined
 		};
-		email(user);
+
 		signin(user).then((data) => {
 			if (data.error) {
 				setValues({ ...values, error: data.error });
@@ -118,13 +118,10 @@ const Signin = ({ onSignin, onsingup }) => {
 
 				<Button as={Link}>Recuperar contraseña </Button>
 
-
 				{/* {` |`}
 				<Button as={Link} onClick={() => onsingup()}>
 					Registrate
 				</Button> */}
-
-
 			</Card>
 		</div>
 	);

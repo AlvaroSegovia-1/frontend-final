@@ -15,7 +15,7 @@ import Signin from '../auth/Signin';
 import Signup from '../usuario/Signup';
 import SignBase from '../auth/SignBase';
 import { list } from '../../API/api-product';
-import Products from '../productos/Products';
+
 import auth from '../auth/auth-helper';
 import 'antd/dist/antd.css';
 /* import './Base.css'; */
@@ -25,7 +25,6 @@ import 'react-responsive-modal/styles.css';
 import {
 	PlusOutlined,
 	UserOutlined,
-	S,
 	AppstoreAddOutlined
 } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom';
@@ -162,26 +161,25 @@ export default function Header() {
 	return (
 		<div className='bajo-navbar'>
 			<navbar className='navbar'>
+				<Col flex='auto'>
+					<a href='#' onClick={handleHome}>
+						<img
+							className='logo2'
+							width={180}
+							src='./Logo-wallarock-2.png'
+							flex='auto'
+							/* preview={false} */
+						/>
+					</a>
+				</Col>
 
-									
-					<Col flex='auto' >
-						<a href='#' onClick={handleHome}>
-							<img 
-								className="logo2"
-								width={180}
-								src='./Logo-wallarock-2.png'
-								flex='auto'
-								/* preview={false} */
-							/>
-						</a>
-					</Col>
+				<Col flex='auto'>
+					{' '}
+					<br />
+				</Col>
 
-					<Col  flex='auto' >
-						{' '}
-						<br />
-					</Col>
-					
-					<Col flex='auto' >
+				<Col flex='auto'>
+					<a>
 						<Search
 							onKeyDown={enterKey}
 							onChange={handleChange('search')}
@@ -191,7 +189,6 @@ export default function Header() {
 							type='danger'
 							color='red'
 							className='logo'
-
 						/>
 					</a>
 				</Col>
