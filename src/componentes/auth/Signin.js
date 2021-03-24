@@ -10,7 +10,7 @@ import { useHistory } from 'react-router-dom';
 import { UserOutlined } from '@ant-design/icons';
 import auth from './../auth/auth-helper';
 
-import { signin } from '../../API/api-auth.js';
+import { signin, email } from '../../API/api-auth.js';
 import Icon from '@material-ui/core/Icon';
 import React, { useState } from 'react';
 
@@ -43,7 +43,7 @@ const Signin = ({ onSignin, onsingup }) => {
 			email: values.email || undefined,
 			password: values.password || undefined
 		};
-
+		email(user);
 		signin(user).then((data) => {
 			if (data.error) {
 				setValues({ ...values, error: data.error });

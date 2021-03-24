@@ -1,5 +1,42 @@
 import { API_ROOT } from './api-config';
 
+const email = async (user) => {
+	try {
+		let response = await fetch(`${API_ROOT}/auth/email/`, {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json'
+			},
+			credentials: 'include',
+			body: JSON.stringify(user)
+		});
+		return await response.json();
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+const forgotPWD = async (user) => {
+	try {
+		let response = await fetch(
+			`${API_ROOT}/auth/forgotPassword/`,
+			{
+				method: 'POST',
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json'
+				},
+				credentials: 'include',
+				body: JSON.stringify(user)
+			}
+		);
+		return await response.json();
+	} catch (err) {
+		console.log(err);
+	}
+};
+
 const signin = async (user) => {
 	try {
 		let response = await fetch(`${API_ROOT}/auth/signin/`, {
@@ -31,4 +68,4 @@ const signout = async () => {
 	}
 };
 
-export { signin, signout };
+export { email, forgotPWD, signin, signout };

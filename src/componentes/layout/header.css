@@ -1,0 +1,41 @@
+.bajo-navbar{
+    border: 2px solid black;
+    background-color: rgb(236, 156, 236);
+    width: 100%;
+
+    /* margin-left: -30px;
+    margin-top: -30px; */
+}
+
+.navbar{
+	background-color: white ;
+	width: 100%;
+	margin-top: 0px;
+	height: 90px;
+	position: fixed;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+    margin-left: -30px;
+    margin-top: -30px;
+
+}
+.bot-cerrar{
+	margin-right: 15px;
+}
+.bot-subir{
+	margin-right: 15px;
+}
+
+.logo2{
+    margin-left: 20px;
+    background-color: white ;
+}
+
+.red{
+	color: #ff1616;
+}
+
+/* .white{
+	background-color: white ;
+} */

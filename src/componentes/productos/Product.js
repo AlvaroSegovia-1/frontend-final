@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Typography, Image } from 'antd';
-
+import { Card, Typography, Image, Button } from 'antd';
+import { email } from '../../API/api-auth.js';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { read, listRelated } from '../../API/api-product';
 import { API_ROOT } from '../../API/api-config';
 import Suggestions from './Suggestions';
-
+import auth from '../auth/auth-helper';
 const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
@@ -58,11 +58,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Product({ match }) {
 	console.log(match.params);
+	const jwt = auth.isAuthenticated();
+	const info = jwt.user;
+
+	const handleButton = () => {
+		email(info);
+	};
 	const classes = useStyles();
 	const [
 		product,
 		setProduct
-	] = useState({ shop: {} });
+	] = useState([]);
 	const [
 		suggestions,
 		setSuggestions
@@ -153,6 +159,14 @@ export default function Product({ match }) {
 								</span>
 							</Typography>
 						</div>
+						{auth.isAuthenticated() && (
+							<Button
+								style={{ float: 'right' }}
+								shape='round'
+								onClick={handleButton}>
+								enviar mis datos al vendedor
+							</Button>
+						)}
 					</Card>
 				</Grid>
 				{suggestions.length > 0 && (
