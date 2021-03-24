@@ -27,7 +27,11 @@ export default function Products(props) {
 								</Link>
 								<GridListTileBar
 									title={
-										<Link to={'/product/' + product._id}>
+										<Link
+											to={{
+												pathname: `/product/ + ${product._id}`,
+												state: { id: 123 }
+											}}>
 											{product.name}
 										</Link>
 									}
