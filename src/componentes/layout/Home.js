@@ -14,8 +14,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Home({ history }) {
-	console.log(history.location.state);
-
 	const classes = useStyles();
 
 	const [
