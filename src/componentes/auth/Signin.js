@@ -10,7 +10,11 @@ import { useHistory } from 'react-router-dom';
 import { UserOutlined } from '@ant-design/icons';
 import auth from './../auth/auth-helper';
 
-import { signin, email } from '../../API/api-auth.js';
+import {
+	signin,
+	email,
+	forgotPWD
+} from '../../API/api-auth.js';
 import Icon from '@material-ui/core/Icon';
 import React, { useState } from 'react';
 
@@ -59,6 +63,16 @@ const Signin = ({ onSignin, onsingup }) => {
 					history.push(`/user/${data.user._id}/product`);
 				});
 			}
+		});
+	};
+
+	const handleContrasena = () => {
+		const user = {
+			email: values.email || undefined
+		};
+
+		forgotPWD(user).then((data) => {
+			console.log(data);
 		});
 	};
 
@@ -116,7 +130,9 @@ const Signin = ({ onSignin, onsingup }) => {
 					</Form.Item>
 				</Form>
 
-				<Button as={Link}>Recuperar contraseña </Button>
+				<Button as={Link} onClick={handleContrasena}>
+					Recuperar contraseña{' '}
+				</Button>
 
 				{/* {` |`}
 				<Button as={Link} onClick={() => onsingup()}>

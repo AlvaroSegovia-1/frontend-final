@@ -52,7 +52,12 @@ export default function Product({ match }) {
 				info.mailshopper = `${userlogged.email}`;
 				info.shopper = `${userlogged.name}`;
 				console.log(info);
-				email(info).then((mensaje) => setMsg(mensaje));
+				email(info).then((mensaje) => {
+					if (mensaje) {
+						console.log(mensaje);
+						setMsg(`${mensaje.message}`);
+					}
+				});
 			});
 		}
 	};
@@ -168,6 +173,13 @@ export default function Product({ match }) {
 					</div>
 
 					<div className='media'>
+						<WhatsappShareButton
+							url={`http://localhost:3001/product/${product._id}`}
+							title={product.name}>
+							<WhatsappIcon size={36} />
+						</WhatsappShareButton>
+					</div>
+					<div className='media'>
 						{auth.isAuthenticated() && (
 							<Button
 								style={{ float: 'right' }}
@@ -176,15 +188,9 @@ export default function Product({ match }) {
 								enviar mis datos al vendedor
 							</Button>
 						)}
-						<p>{msg}</p> <hr />
-					</div>
-
-					<div className='media'>
-						<WhatsappShareButton
-							url={`http://localhost:3001/product/${product._id}`}
-							title={product.name}>
-							<WhatsappIcon size={36} />
-						</WhatsappShareButton>
+						<br />
+						<br />
+						<p>{msg}</p>
 					</div>
 				</div>
 			</div>
