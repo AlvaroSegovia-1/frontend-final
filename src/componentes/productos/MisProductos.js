@@ -57,7 +57,7 @@ export default function MisProductos(props) {
 		const signal = abortController.signal;
 		const jwt = auth.isAuthenticated();
 		const id = jwt.user._id;
-		console.log(props.userId);
+
 		listByShop(
 			{
 				userId: id
@@ -65,7 +65,6 @@ export default function MisProductos(props) {
 			signal
 		).then((data) => {
 			if (data.error) {
-				console.log(data.error);
 			}
 			else {
 				setProducts(data);
@@ -107,7 +106,6 @@ export default function MisProductos(props) {
 			<br />
 			<List>
 				{products.map((product, i) => {
-					console.log(product._id);
 					return (
 						<span key={i}>
 							<ListItem>

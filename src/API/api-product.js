@@ -156,8 +156,6 @@ const list = async (params, signal) => {
 	}
 };
 
-console.log(list)
-
 export {
 	create,
 	read,

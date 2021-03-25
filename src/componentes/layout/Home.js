@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Products from '../productos/Products';
 
-import {
-	listLatest,
-	listCategories
-} from '../../API/api-product';
+import { listLatest } from '../../API/api-product';
 
 import Suggestions from '../productos/Suggestions';
 
@@ -25,10 +22,7 @@ export default function Home({ history }) {
 		productos,
 		setProductos
 	] = useState([]);
-	const [
-		categories,
-		setCategories
-	] = useState([]);
+
 	const [
 		suggestions,
 		setSuggestions
@@ -37,7 +31,7 @@ export default function Home({ history }) {
 	useEffect(
 		() => {
 			const info = history.location.state;
-			console.log(info);
+
 			if (info) {
 				setProductos(info);
 			}
@@ -59,23 +53,6 @@ export default function Home({ history }) {
 			}
 			else {
 				setSuggestions(data);
-			}
-		});
-		return function cleanup() {
-			abortController.abort();
-		};
-	}, []);
-
-	useEffect(() => {
-		const abortController = new AbortController();
-		const signal = abortController.signal;
-		listCategories(signal).then((data) => {
-			console.log(data);
-			if (data.error) {
-				console.log(data.error);
-			}
-			else {
-				setCategories(data);
 			}
 		});
 		return function cleanup() {
