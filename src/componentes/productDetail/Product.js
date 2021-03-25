@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from 'antd';
 
 import auth from '../auth/auth-helper';
-import { read, listRelated } from '../../API/api-product';
+import { read } from '../../API/api-product';
 import { readuser } from '../../API/api-user';
 import { email } from '../../API/api-auth.js';
 import { API_ROOT } from '../../API/api-config';
@@ -14,7 +14,7 @@ import {
 	FacebookShareButton,
 	FacebookIcon
 } from 'react-share';
-import { EmailShareButton, EmailIcon } from 'react-share';
+
 import {
 	WhatsappShareButton,
 	WhatsappIcon
@@ -33,39 +33,43 @@ export default function Product({ match }) {
 		console.log(info);
 		console.log(userlogged);
 
-		const abortController = new AbortController();
-		const signal = abortController.signal;
+		if (info.owner !== null) {
+			const abortController = new AbortController();
+			const signal = abortController.signal;
 
-		readuser(
-			{
-				userId: info.owner._id
-			},
-			{ t: jwt.token },
-			signal
-		).then((data) => {
-			console.log(data.email);
+			readuser(
+				{
+					userId: info.owner._id
+				},
+				{ t: jwt.token },
+				signal
+			).then((data) => {
+				console.log(data.email);
 
-			console.log(data);
-			info.seller = `${data.name}`;
-			info.mailseller = `${data.email}`;
-			info.mailshopper = `${userlogged.email}`;
-			info.shopper = `${userlogged.name}`;
-			console.log(info);
-			email(info);
-		});
+				console.log(data);
+				info.seller = `${data.name}`;
+				info.mailseller = `${data.email}`;
+				info.mailshopper = `${userlogged.email}`;
+				info.shopper = `${userlogged.name}`;
+				console.log(info);
+				email(info).then((mensaje) => setMsg(mensaje));
+			});
+		}
 	};
 
 	const [
 		product,
 		setProduct
 	] = useState([]);
-	const [
-		suggestions,
-		setSuggestions
-	] = useState([]);
+
 	const [
 		error,
 		setError
+	] = useState('');
+
+	const [
+		msg,
+		setMsg
 	] = useState('');
 
 	useEffect(
@@ -83,33 +87,6 @@ export default function Product({ match }) {
 				}
 				else {
 					setProduct(data);
-				}
-			});
-			return function cleanup() {
-				abortController.abort();
-			};
-		},
-		[
-			match.params.productId
-		]
-	);
-
-	useEffect(
-		() => {
-			const abortController = new AbortController();
-			const signal = abortController.signal;
-
-			listRelated(
-				{
-					productId: match.params.productId
-				},
-				signal
-			).then((data) => {
-				if (data.error) {
-					setError(data.error);
-				}
-				else {
-					setSuggestions(data);
 				}
 			});
 			return function cleanup() {
@@ -199,6 +176,7 @@ export default function Product({ match }) {
 								enviar mis datos al vendedor
 							</Button>
 						)}
+						<p>{msg}</p> <hr />
 					</div>
 
 					<div className='media'>
