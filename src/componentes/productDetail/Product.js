@@ -3,7 +3,7 @@ import { Button } from 'antd';
 
 import auth from '../auth/auth-helper';
 import { read, listRelated } from '../../API/api-product';
-// import { read } from '../../API/api-user';
+import { readuser } from '../../API/api-user';
 import { email } from '../../API/api-auth.js';
 import { API_ROOT } from '../../API/api-config';
 import {
@@ -22,12 +22,13 @@ import {
 import Moment from 'react-moment';
 
 import './detailproduct.css';
+import { Mail } from '@material-ui/icons';
 
 export default function Product({ match }) {
 	console.log(match.params);
 	console.log(match.params);
 	const jwt = auth.isAuthenticated();
-	const info = jwt.user;
+	const userlogged = jwt.user;
 
 	const handleButton = (info) => (event) => {
 		console.log(info._id);
@@ -35,15 +36,22 @@ export default function Product({ match }) {
 		const abortController = new AbortController();
 		const signal = abortController.signal;
 
-		read({ userId: info._id }, signal).then((data) => {
-			console.log(data);
+		readuser(
+			{
+				userId: info._id
+			},
+			{ t: jwt.token },
+			signal
+		).then((data) => {
+			console.log(data.email);
+			email(data);
 		});
 	};
 
 	const [
 		product,
 		setProduct
-	] = useState({ shop: {} });
+	] = useState([]);
 	const [
 		suggestions,
 		setSuggestions
@@ -180,7 +188,7 @@ export default function Product({ match }) {
 					</div>
 
 					<div className='media'>
-						{product.owner !== null && (
+						{auth.isAuthenticated() && (
 							<Button
 								style={{ float: 'right' }}
 								shape='round'

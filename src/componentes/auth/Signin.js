@@ -118,13 +118,10 @@ const Signin = ({ onSignin, onsingup }) => {
 
 				<Button as={Link}>Recuperar contraseña </Button>
 
-
 				{/* {` |`}
 				<Button as={Link} onClick={() => onsingup()}>
 					Registrate
 				</Button> */}
-
-
 			</Card>
 		</div>
 	);

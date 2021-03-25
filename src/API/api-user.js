@@ -28,7 +28,7 @@ const list = async (signal) => {
 	}
 };
 
-const read = async (params, credentials, signal) => {
+const readuser = async (params, credentials, signal) => {
 	try {
 		let response = await fetch(
 			`${API_ROOT}/api/users/` + params.userId,
@@ -87,4 +87,4 @@ const remove = async (params, credentials) => {
 	}
 };
 
-export { create, list, read, update, remove };
+export { create, list, readuser, update, remove };

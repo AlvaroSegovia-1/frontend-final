@@ -12,7 +12,7 @@ import Edit from '@material-ui/icons/Edit';
 import Person from '@material-ui/icons/Person';
 import DeleteUser from './DeleteUser';
 import auth from './../auth/auth-helper';
-import { read } from '../../API/api-user';
+import { readuser } from '../../API/api-user';
 import { Redirect, Link } from 'react-router-dom';
 import {
 	/* Skeleton, */
@@ -57,7 +57,7 @@ export default function Profile({ match }) {
 		() => {
 			const abortController = new AbortController();
 			const signal = abortController.signal;
-			read(
+			readuser(
 				{
 					userId: match.params.userId
 				},

@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import { makeStyles } from '@material-ui/core/styles';
 import auth from './../auth/auth-helper';
-import { read, update } from '../../API/api-user';
+import { readuser, update } from '../../API/api-user';
 import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -60,7 +60,7 @@ export default function EditProfile({ match }) {
 			const abortController = new AbortController();
 			const signal = abortController.signal;
 
-			read(
+			readuser(
 				{
 					userId: match.params.userId
 				},
