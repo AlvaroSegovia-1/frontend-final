@@ -22,8 +22,6 @@ import {
 import Moment from 'react-moment';
 
 import './detailproduct.css';
-import { Mail } from '@material-ui/icons';
-import { InfoCircleOutlined } from '@ant-design/icons';
 
 export default function Product({ match }) {
 	console.log(match.params);
@@ -33,6 +31,7 @@ export default function Product({ match }) {
 
 	const handleButton = (info) => (event) => {
 		console.log(info);
+		console.log(userlogged);
 
 		const abortController = new AbortController();
 		const signal = abortController.signal;
@@ -45,13 +44,12 @@ export default function Product({ match }) {
 			signal
 		).then((data) => {
 			console.log(data.email);
-			const mail = JSON.stringify({
-				email: `${data.email}`
-			});
-			console.log(data);
 
-			info.mail = `${data.email}`;
+			console.log(data);
 			info.seller = `${data.name}`;
+			info.mailseller = `${data.email}`;
+			info.mailshopper = `${userlogged.email}`;
+			info.shopper = `${userlogged.name}`;
 			console.log(info);
 			email(info);
 		});
