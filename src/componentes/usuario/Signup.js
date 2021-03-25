@@ -17,7 +17,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const styles = (theme) => ({
 	root: {
@@ -149,10 +149,9 @@ export default function Signup({ onSign }) {
 						Crear una cuenta
 					</Button>
 
-				{/* 	<Button as={Link} onClick={() => onSign()}>
+					<Button as={Link} onClick={() => onSign()}>
 						Sign In
-					</Button> */}
-
+					</Button>
 				</Form.Item>
 			</Card>
 
@@ -175,7 +174,6 @@ export default function Signup({ onSign }) {
 						Sign in
 					</Button>
 				</DialogActions>
-
 			</Dialog>
 		</div>
 	);

@@ -38,6 +38,11 @@ const Signin = ({ onSignin, onsingup }) => {
 		error: ''
 	});
 
+	const [
+		msg,
+		setMsg
+	] = useState('');
+
 	const couldSubmit = () => {
 		return values.email && values.password;
 	};
@@ -73,6 +78,12 @@ const Signin = ({ onSignin, onsingup }) => {
 
 		forgotPWD(user).then((data) => {
 			console.log(data);
+			if (data.error) {
+				setMsg(`${data.error}`);
+			}
+			if (data.message) {
+				setMsg(`${data.message}`);
+			}
 		});
 	};
 
@@ -115,6 +126,7 @@ const Signin = ({ onSignin, onsingup }) => {
 								{values.error}
 							</Typography>
 						)}
+						<Typography>{msg}</Typography>
 					</Form.Item>
 
 					<Form.Item {...tailLayout}>
@@ -134,10 +146,11 @@ const Signin = ({ onSignin, onsingup }) => {
 					Recuperar contraseña{' '}
 				</Button>
 
-				{/* {` |`}
+				{` |`}
 				<Button as={Link} onClick={() => onsingup()}>
 					Registrate
-				</Button> */}
+				</Button>
+				<br />
 			</Card>
 		</div>
 	);

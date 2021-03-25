@@ -24,10 +24,15 @@ import Moment from 'react-moment';
 import './detailproduct.css';
 
 export default function Product({ match }) {
+	console.log(match.params);
+	console.log(match.params);
 	const jwt = auth.isAuthenticated();
 	const userlogged = jwt.user;
 
 	const handleButton = (info) => (event) => {
+		console.log(info);
+		console.log(userlogged);
+
 		if (info.owner !== null) {
 			const abortController = new AbortController();
 			const signal = abortController.signal;
@@ -39,13 +44,17 @@ export default function Product({ match }) {
 				{ t: jwt.token },
 				signal
 			).then((data) => {
+				console.log(data.email);
+
+				console.log(data);
 				info.seller = `${data.name}`;
 				info.mailseller = `${data.email}`;
 				info.mailshopper = `${userlogged.email}`;
 				info.shopper = `${userlogged.name}`;
-
+				console.log(info);
 				email(info).then((mensaje) => {
 					if (mensaje) {
+						console.log(mensaje);
 						setMsg(`${mensaje.message}`);
 					}
 				});
@@ -77,6 +86,7 @@ export default function Product({ match }) {
 				{ productId: match.params.productId },
 				signal
 			).then((data) => {
+				console.log(data);
 				if (data.error) {
 					setError(data.error);
 				}
