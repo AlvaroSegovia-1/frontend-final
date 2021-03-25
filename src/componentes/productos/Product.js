@@ -113,6 +113,7 @@ export default function Product({ match }) {
 				},
 				signal
 			).then((data) => {
+				console.log(data);
 				if (data.error) {
 					setError(data.error);
 				}
@@ -137,13 +138,6 @@ export default function Product({ match }) {
 			<Grid container spacing={10}>
 				<Grid item xs={7} sm={7}>
 					<Card className={classes.card} elevation={10}>
-						<Card
-							subheader={
-
-									product.quantity > 0 ? 'Con stock' :
-									'Sin existencias'
-							}
-						/>
 						<div className={classes.flex}>
 							<Image width={200} src={imageUrl} />
 							<Card
@@ -155,7 +149,7 @@ export default function Product({ match }) {
 								{product.description}
 								<br />
 								<span className={classes.price}>
-									{product.price} €
+									{product.owner} €
 								</span>
 							</Typography>
 						</div>

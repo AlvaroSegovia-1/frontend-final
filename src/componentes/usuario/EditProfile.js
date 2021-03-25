@@ -127,7 +127,9 @@ export default function EditProfile({ match }) {
 	}
 	return (
 		<Card className={classes.card}>
-				<Typography variant='h4' className={classes.title}>Menu de Usuario</Typography>
+			<Typography variant='h4' className={classes.title}>
+				Menu de Usuario
+			</Typography>
 			<CardContent>
 				<Typography variant='h5' className={classes.title}>
 					Editar Perfil

@@ -3,6 +3,7 @@ import { Button } from 'antd';
 
 import auth from '../auth/auth-helper';
 import { read, listRelated } from '../../API/api-product';
+// import { read } from '../../API/api-user';
 import { email } from '../../API/api-auth.js';
 import { API_ROOT } from '../../API/api-config';
 import {
@@ -28,9 +29,17 @@ export default function Product({ match }) {
 	const jwt = auth.isAuthenticated();
 	const info = jwt.user;
 
-	const handleButton = () => {
-		email(info);
+	const handleButton = (info) => (event) => {
+		console.log(info._id);
+
+		const abortController = new AbortController();
+		const signal = abortController.signal;
+
+		read({ userId: info._id }, signal).then((data) => {
+			console.log(data);
+		});
 	};
+
 	const [
 		product,
 		setProduct
@@ -53,6 +62,7 @@ export default function Product({ match }) {
 				{ productId: match.params.productId },
 				signal
 			).then((data) => {
+				console.log(data);
 				if (data.error) {
 					setError(data.error);
 				}
@@ -95,6 +105,10 @@ export default function Product({ match }) {
 			match.params.productId
 		]
 	);
+
+
+		product.owner === null ? console.log(null) :
+		console.log(product.owner);
 
 	const imageUrl =
 		product._id ? `${API_ROOT}/api/product/image/${product._id}` :
@@ -166,19 +180,14 @@ export default function Product({ match }) {
 					</div>
 
 					<div className='media'>
-						{auth.isAuthenticated() && (
+						{product.owner !== null && (
 							<Button
 								style={{ float: 'right' }}
 								shape='round'
-								onClick={handleButton}>
+								onClick={handleButton(product.owner)}>
 								enviar mis datos al vendedor
 							</Button>
 						)}
-						<EmailShareButton
-							url={`http://localhost:3001/product/${product._id}`}
-							title={product.name}>
-							<EmailIcon size={36} />
-						</EmailShareButton>
 					</div>
 
 					<div className='media'>
