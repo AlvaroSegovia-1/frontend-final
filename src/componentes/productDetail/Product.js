@@ -23,6 +23,7 @@ import Moment from 'react-moment';
 
 import './detailproduct.css';
 import { Mail } from '@material-ui/icons';
+import { InfoCircleOutlined } from '@ant-design/icons';
 
 export default function Product({ match }) {
 	console.log(match.params);
@@ -31,20 +32,28 @@ export default function Product({ match }) {
 	const userlogged = jwt.user;
 
 	const handleButton = (info) => (event) => {
-		console.log(info._id);
+		console.log(info);
 
 		const abortController = new AbortController();
 		const signal = abortController.signal;
 
 		readuser(
 			{
-				userId: info._id
+				userId: info.owner._id
 			},
 			{ t: jwt.token },
 			signal
 		).then((data) => {
 			console.log(data.email);
-			email(data);
+			const mail = JSON.stringify({
+				email: `${data.email}`
+			});
+			console.log(data);
+
+			info.mail = `${data.email}`;
+			info.seller = `${data.name}`;
+			console.log(info);
+			email(info);
 		});
 	};
 
@@ -113,10 +122,6 @@ export default function Product({ match }) {
 			match.params.productId
 		]
 	);
-
-
-		product.owner === null ? console.log(null) :
-		console.log(product.owner);
 
 	const imageUrl =
 		product._id ? `${API_ROOT}/api/product/image/${product._id}` :
@@ -192,7 +197,7 @@ export default function Product({ match }) {
 							<Button
 								style={{ float: 'right' }}
 								shape='round'
-								onClick={handleButton(product.owner)}>
+								onClick={handleButton(product)}>
 								enviar mis datos al vendedor
 							</Button>
 						)}
