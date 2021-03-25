@@ -57,7 +57,7 @@ export default function MyProducts(props) {
 		const signal = abortController.signal;
 		const jwt = auth.isAuthenticated();
 		const id = jwt.user._id;
-		console.log(props.userId);
+
 		listByShop(
 			{
 				userId: id

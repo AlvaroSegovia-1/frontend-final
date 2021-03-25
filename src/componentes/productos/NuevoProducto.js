@@ -14,7 +14,7 @@ import {
 	Divider
 } from 'antd';
 
-import './nuevoproducto.css'
+import './nuevoproducto.css';
 
 export default function NuevoProducto({ match }) {
 	const [
@@ -40,9 +40,8 @@ export default function NuevoProducto({ match }) {
 	};
 	const jwt = auth.isAuthenticated();
 	const id = jwt.user._id;
-	console.log(id);
+
 	const handleChange = (name) => (event) => {
-		console.log(event);
 		const value =
 
 				name === 'price' ? event :
@@ -87,7 +86,7 @@ export default function NuevoProducto({ match }) {
 		return <Redirect to={`/user/${id}/product`} />;
 	}
 	return (
-		<div className="subir-producto">
+		<div className='subir-producto'>
 			<Form layout='vertical'>
 				<Typography type='headline' component='h5'>
 					INFORMACIÓN DE TU PRODUCTO

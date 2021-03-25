@@ -113,7 +113,6 @@ export default function Product({ match }) {
 				},
 				signal
 			).then((data) => {
-				console.log(data);
 				if (data.error) {
 					setError(data.error);
 				}
