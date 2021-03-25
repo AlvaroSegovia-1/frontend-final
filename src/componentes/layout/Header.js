@@ -34,8 +34,6 @@ export default function Header() {
 	});
 
 	const handleChange = (name) => (event) => {
-		const info = event.target.value;
-		console.log(info);
 		setValues({
 			...values,
 			[name]: event.target.value
@@ -45,14 +43,12 @@ export default function Header() {
 		});
 	};
 	const search = () => {
-		console.log(values.search);
 		if (values.search) {
 			list({
 				search: values.search,
 				category: values.category
 			}).then((data) => {
 				if (data.error) {
-					console.log(data);
 				}
 				else {
 					setValues({
@@ -72,7 +68,7 @@ export default function Header() {
 	const enterKey = (event) => {
 		if (event.keyCode === 13) {
 			event.preventDefault();
-			console.log('pase por aca');
+
 			search();
 		}
 	};

@@ -12,9 +12,7 @@ const email = async (user) => {
 			body: JSON.stringify(user)
 		});
 		return await response.json();
-	} catch (err) {
-		console.log(err);
-	}
+	} catch (err) {}
 };
 
 const forgotPWD = async (user) => {
@@ -32,9 +30,7 @@ const forgotPWD = async (user) => {
 			}
 		);
 		return await response.json();
-	} catch (err) {
-		console.log(err);
-	}
+	} catch (err) {}
 };
 
 const signin = async (user) => {
@@ -49,9 +45,7 @@ const signin = async (user) => {
 			body: JSON.stringify(user)
 		});
 		return await response.json();
-	} catch (err) {
-		console.log(err);
-	}
+	} catch (err) {}
 };
 
 const signout = async () => {
@@ -63,9 +57,7 @@ const signout = async () => {
 			}
 		);
 		return await response.json();
-	} catch (err) {
-		console.log(err);
-	}
+	} catch (err) {}
 };
 
 export { email, forgotPWD, signin, signout };

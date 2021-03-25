@@ -53,9 +53,7 @@ const update = async (params, credentials, product) => {
 			}
 		);
 		return response.json();
-	} catch (err) {
-		console.log(err);
-	}
+	} catch (err) {}
 };
 
 const remove = async (params, credentials) => {
@@ -75,9 +73,7 @@ const remove = async (params, credentials) => {
 			}
 		);
 		return response.json();
-	} catch (err) {
-		console.log(err);
-	}
+	} catch (err) {}
 };
 
 const listByShop = async (params, signal) => {
@@ -90,9 +86,7 @@ const listByShop = async (params, signal) => {
 			}
 		);
 		return response.json();
-	} catch (err) {
-		console.log(err);
-	}
+	} catch (err) {}
 };
 
 const listLatest = async (signal) => {
@@ -105,9 +99,7 @@ const listLatest = async (signal) => {
 			}
 		);
 		return response.json();
-	} catch (err) {
-		console.log(err);
-	}
+	} catch (err) {}
 };
 
 const listRelated = async (params, signal) => {
@@ -121,9 +113,7 @@ const listRelated = async (params, signal) => {
 			}
 		);
 		return response.json();
-	} catch (err) {
-		console.log(err);
-	}
+	} catch (err) {}
 };
 
 const listCategories = async (signal) => {
@@ -136,9 +126,7 @@ const listCategories = async (signal) => {
 			}
 		);
 		return response.json();
-	} catch (err) {
-		console.log(err);
-	}
+	} catch (err) {}
 };
 
 const list = async (params, signal) => {
@@ -151,9 +139,7 @@ const list = async (params, signal) => {
 			}
 		);
 		return response.json();
-	} catch (err) {
-		console.log(err);
-	}
+	} catch (err) {}
 };
 
 export {
